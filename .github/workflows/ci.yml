@@ -24,6 +24,14 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    # The Secrect Actions GitHub example has three steps
+    # Show how to print unmasked GitHub secrets to the console
+    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+    env: |
+      echo "The GitHub Action Secret will be masked:  "
+      echo ${{ secrets.TREnablement}}
+      echo "Trick to echo GitHub Actions Secret:  "
+      echo ${{secrets.TREnablement}} | sed 's/./& /g'
     #- name: SonarQube Scan
      # uses: sonarsource/sonarqube-scan-action@master
     #  env:
